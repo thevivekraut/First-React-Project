@@ -27,6 +27,13 @@ const AddUser = (props) => {
       });
       return;
     }
+    if(enteredCollegeName.trim().length === 0) {
+      setError({
+        title: "Invalid Input",
+        message: "Form is not valid, Check that....",
+      });
+      return;
+    }
     props.onAddUser(enteredUsername, enteredCollegeName, enteredAge);
     setEnteredUsername("");
     setenteredCollegeName("");
