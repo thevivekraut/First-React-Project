@@ -7,6 +7,7 @@ import classes from "./AddUser.module.css";
 
 const AddUser = (props) => {
   const [enteredUsername, setEnteredUsername] = useState("");
+  const [enteredCollegeName, setenteredCollegeName] = useState("");
   const [enteredAge, setEnteredAge] = useState("");
   const [error, setError] = useState();
 
@@ -26,13 +27,18 @@ const AddUser = (props) => {
       });
       return;
     }
-    props.onAddUser(enteredUsername, enteredAge);
+    props.onAddUser(enteredUsername, enteredCollegeName, enteredAge);
     setEnteredUsername("");
+    setenteredCollegeName("");
     setEnteredAge("");
   };
 
   const usernameChanegeHandler = (event) => {
     setEnteredUsername(event.target.value);
+  };
+
+  const collegeNameChangeHandler = (event) => {
+    setenteredCollegeName(event.target.value);
   };
 
   const ageChanegeHandler = (event) => {
@@ -62,6 +68,15 @@ const AddUser = (props) => {
             value={enteredUsername}
             onChange={usernameChanegeHandler}
           />
+
+          <label htmlFor="collegeName">College Name</label>
+          <input
+            id="collegeName"
+            type="text"
+            value={enteredCollegeName}
+            onChange={collegeNameChangeHandler}
+          />
+
           <label htmlFor="age">Age (Years)</label>
           <input
             id="age"
